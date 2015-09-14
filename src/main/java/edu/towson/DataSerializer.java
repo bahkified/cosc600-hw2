@@ -6,8 +6,6 @@ import edu.towson.account.CheckingAccount;
 import edu.towson.account.SavingsAccount;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -17,7 +15,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class DataSerializer {
-    private static final String FILE = "data.txt";
 
     public static List<AccountHolder> readDate(String filepath) throws IOException {
         return toAccountHolderList(
@@ -25,21 +22,26 @@ public class DataSerializer {
         );
     }
 
-    public static List<AccountHolder> readData() throws IOException {
-        try {
-            URL fileUrl = DataSerializer.class.getClassLoader().getResource(FILE);
-            if (fileUrl == null) {
-                return null;
-            }
-            List<String> lines = Files.readAllLines(Paths.get(fileUrl.toURI()));   // Can throw IOException
-            return toAccountHolderList(lines);
-
-        } catch (URISyntaxException | NullPointerException e) {
-            System.err.println("");
-            return null;
-        }
-
-    }
+    // TODO commented code does not work, see comments.
+    /*
+        Code below is trying to read the included data file, inside the JAR.
+        This cannot be read in the way below, as the data is compressed.
+     */
+//    public static List<AccountHolder> readData() throws IOException {
+//        try {
+//            URL fileUrl = DataSerializer.class.getClassLoader().getResource(FILE);
+//            if (fileUrl == null) {
+//                return null;
+//            }
+//            List<String> lines = Files.readAllLines(Paths.get(fileUrl.toURI()));   // Can throw IOException
+//            return toAccountHolderList(lines);
+//
+//        } catch (URISyntaxException | NullPointerException e) {
+//            System.err.println("");
+//            return null;
+//        }
+//
+//    }
 
     private static List<AccountHolder> toAccountHolderList(List<String> lines) {
         Map<String, AccountHolder> accountHolderMap = new HashMap<>();

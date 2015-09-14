@@ -12,14 +12,16 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // Reading data file
         List<AccountHolder> accountHolders;
-        if (args == null || args.length == 0) {
-            accountHolders = DataSerializer.readData();
+        if (args == null || args.length != 1) {
+            System.err.println("No data file specified.");
+            System.exit(-1);
         } else {
             accountHolders = DataSerializer.readDate(args[0]);
-        }
 
-        printOutputHeader();
-        printNextMonth(accountHolders);
+            // Modify this to print whatever you need.
+            printOutputHeader();
+            printNextMonth(accountHolders);
+        }
     }
 
     private static void printOutputHeader() {
