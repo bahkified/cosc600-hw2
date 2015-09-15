@@ -18,7 +18,7 @@ java -jar target/hw2.jar src/main/resources/data.txt
 Using the example above, the code will run on the data file, `data.txt` which sits at the projects resources directory. You will get the following output:
 
 ```
-user@Puget-128857:~/workspace/freeman-hw2$ java -jar target/hw2.jar src/main/resources/data.txt 
+user@Puget-128857:~/workspace/cosc600-hw2$ java -jar target/hw2.jar src/main/resources/data.txt 
 Name	SSN	account number	phone number	open balance	close balance
 Carla	233-98-3831	74329832	555-9812	$230.00	$235.75
 Cliff	811-12-9811	38737737	555-9171	$6,700.00	$7,035.00
